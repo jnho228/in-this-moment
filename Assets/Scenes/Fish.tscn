@@ -1,0 +1,186 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Assets/Scenes/Fish.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Textures/Fish Pack/fishTile_080.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/Kenney Future Square.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Textures/UI/squareGreen.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Textures/UI/squareBlue.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Textures/UI/squareRed.png" type="Texture" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 42.891
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.188235, 0.172549, 0.447059, 0.533333 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 23
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 19, 26 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 19, 26 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+modulate_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 19, 26 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 19, 26 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+modulate_color = Color( 0, 0, 0, 1 )
+
+[node name="Fish" type="Area2D"]
+position = Vector2( 0.677811, -0.45187 )
+collision_mask = 3
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.57079
+shape = SubResource( 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true
+collision_mask = 3
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="InformationPanel" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -66.0
+margin_top = -176.115
+margin_right = 66.0
+margin_bottom = -25.1151
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="InformationPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -68.5
+margin_right = 64.0
+margin_bottom = -33.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 3 )
+text = "[]"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="AgeLabel" type="Label" parent="InformationPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -22.0
+margin_top = -18.5
+margin_right = 22.0
+margin_bottom = 8.5
+custom_fonts/font = SubResource( 4 )
+text = "Age"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HungerLabel" type="Label" parent="InformationPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.5
+margin_top = 23.5
+margin_right = 44.5
+margin_bottom = 50.5
+custom_fonts/font = SubResource( 4 )
+text = "Hunger"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AgeBar" type="ProgressBar" parent="InformationPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.0
+margin_top = 8.5
+margin_right = 55.0
+margin_bottom = 22.5
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HungerBar" type="ProgressBar" parent="InformationPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.0
+margin_top = 49.5
+margin_right = 55.0
+margin_bottom = 63.5
+custom_styles/fg = SubResource( 7 )
+custom_styles/bg = SubResource( 8 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="mouse_entered" from="." to="." method="_on_Fish_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Fish_mouse_exited"]
